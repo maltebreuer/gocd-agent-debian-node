@@ -2,6 +2,12 @@ FROM gocd/docker-gocd-agent-debian-8:v17.8.0
 
 MAINTAINER Malte Breuer
 
+RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
+  && case "${dpkgArch##*-}" in \
+    amd64) ARCH='x64';; \
+    ppc64el) ARCH='ppc64le';; \
+    *) echo "unsupported architecture ==> $dpkgArch"; exit 1 ;;
+
 RUN groupadd --gid 1001 node \
   && useradd --uid 1001 --gid node --shell /bin/bash --create-home node
 
