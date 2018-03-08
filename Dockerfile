@@ -1,4 +1,4 @@
-FROM gocd/docker-gocd-agent-debian-8:v17.9.0
+FROM gocd/docker-gocd-agent-debian-8:v18.2.0
 
 MAINTAINER Malte Breuer
 
